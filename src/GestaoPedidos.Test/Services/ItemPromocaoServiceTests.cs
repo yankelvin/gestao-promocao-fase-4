@@ -3,7 +3,7 @@ using GestaoPedidos.Domain.Entities;
 using GestaoPedidos.Domain.Interfaces.Repositories;
 using Moq;
 
-namespace GestaoPedidos.Application.Tests.Services
+namespace GestaoPedidos.Test.Services
 {
     [TestFixture]
     public class ItemPromocaoServiceTests

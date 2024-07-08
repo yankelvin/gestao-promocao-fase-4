@@ -1,0 +1,58 @@
+name: Deploy to Lambda
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          # Disabling shallow clones is recommended for improving the relevancy of reporting
+          fetch-depth: 0
+          
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Sonarqube Begin
+        run: |
+          dotnet tool install --global dotnet-sonarscanner --version 5.14.0
+          dotnet sonarscanner begin /d:sonar.cs.opencover.reportsPaths=./src/GestaoPedidos.Test/coverage.opencover.xml /d:sonar.cs.vscoveragexml.reportsPaths=./src/GestaoPedidos.Test/coverage.opencover.xml /o:fiap /k:gestao-pedidos-pedido /d:sonar.login=sqa_b632c864822aeae6d1e1c5f000363596eeb65460 /d:sonar.verbose=true /d:sonar.dotnet.excludeTestProjects=true /d:sonar.host.url=http://54.161.116.110:9000
+      
+      - name: Dotnet Build
+        run: |
+          dotnet build .
+      
+      - name: Generate Test Coverage
+        run: |
+          dotnet test --no-build --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+
+      - name: List
+        run:
+          ls -la ./src/GestaoPedidos.Test/
+
+      - name: Sonarqube End
+        run: |
+          dotnet sonarscanner end /d:sonar.login=sqa_b632c864822aeae6d1e1c5f000363596eeb65460
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+    
+      - name: Install dotnet Lambda
+        run: |
+          dotnet tool install --global Amazon.Lambda.Tools
+
+      - name: Deploy lambda
+        run: |
+          dotnet lambda deploy-serverless --region us-east-1 --stack-name gestao-pedidos-web-deploy --template ./src/GestaoPedidos.Web/serverless.template --s3-bucket gestao-pedidos-web-lambda 
