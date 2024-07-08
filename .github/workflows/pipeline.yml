@@ -24,7 +24,7 @@ jobs:
       - name: Sonarqube Begin
         run: |
           dotnet tool install --global dotnet-sonarscanner --version 5.14.0
-          dotnet sonarscanner begin /d:sonar.cs.opencover.reportsPaths=./src/GestaoPedidos.Test/coverage.opencover.xml /d:sonar.cs.vscoveragexml.reportsPaths=./src/GestaoPedidos.Test/coverage.opencover.xml /o:fiap /k:gestao-pedidos-pedido /d:sonar.login=sqp_afc721da5c4c785707b7ee9b140b75471d4681ef /d:sonar.verbose=true /d:sonar.dotnet.excludeTestProjects=true /d:sonar.host.url=http://54.161.116.110:9000
+          dotnet sonarscanner begin /d:sonar.cs.opencover.reportsPaths=./src/GestaoPedidos.Test/coverage.opencover.xml /d:sonar.cs.vscoveragexml.reportsPaths=./src/GestaoPedidos.Test/coverage.opencover.xml /o:fiap /k:gestao-pedidos-pedido /d:sonar.login=sqp_14c47463d970af45c949ee06bbb6611eea0b32f7 /d:sonar.verbose=true /d:sonar.dotnet.excludeTestProjects=true /d:sonar.host.url=http://54.161.116.110:9000
       
       - name: Dotnet Build
         run: |
@@ -40,7 +40,7 @@ jobs:
 
       - name: Sonarqube End
         run: |
-          dotnet sonarscanner end /d:sonar.login=sqp_afc721da5c4c785707b7ee9b140b75471d4681ef
+          dotnet sonarscanner end /d:sonar.login=sqp_14c47463d970af45c949ee06bbb6611eea0b32f7
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
