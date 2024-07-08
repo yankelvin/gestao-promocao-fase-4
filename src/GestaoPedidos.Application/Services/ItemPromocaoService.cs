@@ -25,12 +25,12 @@ namespace GestaoPedidos.Application.Services
 
         public Task<IEnumerable<ItemPromocao>> ObterItemPromocaoPorProduto(int produtoId)
         {
-            return (Task<IEnumerable<ItemPromocao>>)_itemPromocaoRepository.Obter().Result.Where(p => p.IdProduto.Equals(produtoId));
+            return Task.FromResult(_itemPromocaoRepository.Obter().Result.Where(p => p.IdProduto.Equals(produtoId)));
         }
 
         public Task<IEnumerable<ItemPromocao>> ObterItemPromocaoPorPromocao(int promocaoId)
         {
-            return (Task<IEnumerable<ItemPromocao>>)_itemPromocaoRepository.Obter().Result.Where(p => p.IdPromocao.Equals(promocaoId));
+            return Task.FromResult(_itemPromocaoRepository.Obter().Result.Where(p => p.IdPromocao.Equals(promocaoId)));
         }
 
         public async Task RemoverItemPromocao(int promocaoId)

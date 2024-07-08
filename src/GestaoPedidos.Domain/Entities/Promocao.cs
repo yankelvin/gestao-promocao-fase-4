@@ -16,18 +16,5 @@ namespace GestaoPedidos.Domain.Entities
             Texto = texto;
             Status = status;
         }
-
-        public void AlterarTexto(string texto)
-        {
-            if (string.IsNullOrEmpty(texto))
-                throw new ArgumentException("Texto da promocao nao pode ser nulo e nem vazio.");
-
-            Texto = texto;
-        }
-
-        public void AlterarStatus(bool status)
-        {
-            Status = status;
-        }
     }
 }

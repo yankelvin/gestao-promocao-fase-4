@@ -1,7 +1,9 @@
 ﻿using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using GestaoPedidos.Domain.Entities;
+using System.Diagnostics.CodeAnalysis;
 
+[ExcludeFromCodeCoverage]
 public class DynamoDbService<T> where T : Entidade
 {
     private readonly IAmazonDynamoDB _dynamoDbClient;

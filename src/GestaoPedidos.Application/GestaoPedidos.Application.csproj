@@ -15,8 +15,4 @@
     <ProjectReference Include="..\GestaoPedidos.Infrastructure\GestaoPedidos.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Mappings\" />
-  </ItemGroup>
-
 </Project>

@@ -23,8 +23,4 @@
     <ProjectReference Include="..\GestaoPedidos.Domain\GestaoPedidos.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Data\Configuration\" />
-  </ItemGroup>
-
 </Project>

@@ -2,7 +2,7 @@
 
 namespace GestaoPedidos.Domain.Entities
 {
-    public abstract class Entidade
+    public class Entidade
     {
         [DynamoDBHashKey]
         public int Id;

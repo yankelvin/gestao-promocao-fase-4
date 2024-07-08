@@ -20,7 +20,7 @@ namespace GestaoPedidos.Application.Services
 
         public Task<IEnumerable<HistoricoUsoPromocao>> ObterHistoricoUsoPromocao(int clienteId)
         {
-            return (Task<IEnumerable<HistoricoUsoPromocao>>)_historicoUsoPromocaoRepository.Obter().Result.Where(p => p.IdCliente.Equals(clienteId));
+            return Task.FromResult(_historicoUsoPromocaoRepository.Obter().Result.Where(p => p.IdCliente.Equals(clienteId)));
         }
     }
 }
