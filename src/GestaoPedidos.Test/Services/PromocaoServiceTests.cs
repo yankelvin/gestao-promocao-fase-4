@@ -11,8 +11,7 @@ namespace GestaoPedidos.Test.Services
         private Mock<IPromocaoRepository> _mockPromocaoRepository;
         private PromocaoService _promocaoService;
 
-        [SetUp]
-        public void Setup()
+        public PromocaoServiceTests()
         {
             _mockPromocaoRepository = new Mock<IPromocaoRepository>();
             _promocaoService = new PromocaoService(_mockPromocaoRepository.Object);

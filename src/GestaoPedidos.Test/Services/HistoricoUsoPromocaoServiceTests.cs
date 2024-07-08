@@ -11,8 +11,7 @@ namespace GestaoPedidos.Test.Services
         private Mock<IHistoricoUsoPromocaoRepository> _mockHistoricoUsoPromocaoRepository;
         private HistoricoUsoPromocaoService _historicoUsoPromocaoService;
 
-        [SetUp]
-        public void Setup()
+        public HistoricoUsoPromocaoServiceTests()
         {
             _mockHistoricoUsoPromocaoRepository = new Mock<IHistoricoUsoPromocaoRepository>();
             _historicoUsoPromocaoService = new HistoricoUsoPromocaoService(_mockHistoricoUsoPromocaoRepository.Object);
