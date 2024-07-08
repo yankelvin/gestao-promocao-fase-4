@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gestao-pedidos-deployment
+  labels:
+    app: gestao-pedidos
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gestao-pedidos
+  template:
+    metadata:
+      labels:
+        app: gestao-pedidos
+    spec:
+      containers:
+      - name: gestao-pedidos
+        image: arturcavalcante/gestao-pedidos:latest
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: 100m
+            memory: 150Mi
+          requests:
+            cpu: 40m
+            memory: 50Mi
