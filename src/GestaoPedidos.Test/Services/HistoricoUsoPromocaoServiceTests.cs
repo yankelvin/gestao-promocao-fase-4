@@ -2,10 +2,10 @@
 using GestaoPedidos.Domain.Entities;
 using GestaoPedidos.Domain.Interfaces.Repositories;
 using Moq;
+using Xunit;
 
 namespace GestaoPedidos.Test.Services
 {
-    [TestFixture]
     public class HistoricoUsoPromocaoServiceTests
     {
         private Mock<IHistoricoUsoPromocaoRepository> _mockHistoricoUsoPromocaoRepository;
@@ -18,7 +18,7 @@ namespace GestaoPedidos.Test.Services
             _historicoUsoPromocaoService = new HistoricoUsoPromocaoService(_mockHistoricoUsoPromocaoRepository.Object);
         }
 
-        [Test]
+        [Fact]
         public async Task CadastrarHistoricoUsoPromocao_ChamaRepositorioCadastrar()
         {
             // Arrange
@@ -31,7 +31,7 @@ namespace GestaoPedidos.Test.Services
             _mockHistoricoUsoPromocaoRepository.Verify(repo => repo.Cadastrar(historicoUsoPromocao), Times.Once);
         }
 
-        [Test]
+        [Fact]
         public async Task ObterHistoricoUsoPromocao_RetornaItensCorretos()
         {
             // Arrange

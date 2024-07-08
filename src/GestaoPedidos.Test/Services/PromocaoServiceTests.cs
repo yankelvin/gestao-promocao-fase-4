@@ -2,10 +2,10 @@
 using GestaoPedidos.Domain.Entities;
 using GestaoPedidos.Domain.Interfaces.Repositories;
 using Moq;
+using Xunit;
 
 namespace GestaoPedidos.Test.Services
 {
-    [TestFixture]
     public class PromocaoServiceTests
     {
         private Mock<IPromocaoRepository> _mockPromocaoRepository;
@@ -18,7 +18,7 @@ namespace GestaoPedidos.Test.Services
             _promocaoService = new PromocaoService(_mockPromocaoRepository.Object);
         }
 
-        [Test]
+        [Fact]
         public async Task CadastrarPromocao_ChamaRepositorioCadastrar()
         {
             // Arrange
@@ -31,7 +31,7 @@ namespace GestaoPedidos.Test.Services
             _mockPromocaoRepository.Verify(repo => repo.Cadastrar(promocao), Times.Once);
         }
 
-        [Test]
+        [Fact]
         public async Task AtualizarPromocao_ChamaRepositorioAtualizar()
         {
             // Arrange
@@ -44,7 +44,7 @@ namespace GestaoPedidos.Test.Services
             _mockPromocaoRepository.Verify(repo => repo.Atualizar(promocao), Times.Once);
         }
 
-        [Test]
+        [Fact]
         public async Task ObterPromocao_ChamaRepositorioObterTodos()
         {
             // Arrange
@@ -62,7 +62,7 @@ namespace GestaoPedidos.Test.Services
             _mockPromocaoRepository.Verify(repo => repo.Obter(), Times.Once);
         }
 
-        [Test]
+        [Fact]
         public async Task ObterPromocaoPorId_ChamaRepositorioObterPorId()
         {
             // Arrange
@@ -77,7 +77,7 @@ namespace GestaoPedidos.Test.Services
             _mockPromocaoRepository.Verify(repo => repo.Obter(promocaoId), Times.Once);
         }
 
-        [Test]
+        [Fact]
         public async Task RemoverPromocao_ChamaRepositorioRemover()
         {
             // Arrange
