@@ -1,4 +1,5 @@
 using Amazon.DynamoDBv2;
+using GestaoPedidos.Infrastructure.Data.Repositories;
 using GestaoPedidos.Web;
 using GestaoPedidos.Web.DependencyInjections;
 
