@@ -1,7 +1,10 @@
-﻿namespace GestaoPedidos.Domain.Entities
+﻿using Amazon.DynamoDBv2.DataModel;
+
+namespace GestaoPedidos.Domain.Entities
 {
     public abstract class Entidade
     {
+        [DynamoDBHashKey]
         public int Id;
     }
 }

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.304.5" />
     <PackageReference Include="EFCore.NamingConventions" Version="8.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="8.0.2" />
@@ -20,6 +21,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GestaoPedidos.Domain\GestaoPedidos.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Configuration\" />
   </ItemGroup>
 
 </Project>

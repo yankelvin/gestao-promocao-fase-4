@@ -1,4 +1,4 @@
-using GestaoPedidos.Infrastructure.Data.Configuration;
+using Amazon.DynamoDBv2;
 using GestaoPedidos.Web;
 using GestaoPedidos.Web.DependencyInjections;
 
@@ -10,18 +10,19 @@ AppSettings appSettings = new();
 configuration.GetSection(nameof(AppSettings)).Bind(appSettings);
 
 builder.Services.AddControllers(options => { });
+builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
+builder.Services.AddAWSService<IAmazonDynamoDB>();
+builder.Services.AddScoped(typeof(DynamoDbService<>));
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddServices();
 builder.Services.AddHealthChecks();
-builder.Services.AddMappers();
-builder.Services.AddDatabase(appSettings.DatabaseConnection);
 builder.Services.AddSwaggerGen(c =>
 {
     c.EnableAnnotations();
     c.SwaggerDoc("v1", new()
     {
-        Title = "Swagger Gestão de Pedidos WEB API",
-        Description = "Aplicação para gestão de pedidos do restaurante"
+        Title = "Swagger Gestão de Promoções WEB API",
+        Description = "Aplicação para gestão de promoções do restaurante"
     });
     var filePath = Path.Combine(System.AppContext.BaseDirectory, "GestaoPedidos.xml");
     c.IncludeXmlComments(filePath);

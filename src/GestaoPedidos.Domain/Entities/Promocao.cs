@@ -1,19 +1,18 @@
-﻿namespace GestaoPedidos.Domain.Entities
+﻿using Amazon.DynamoDBv2.DataModel;
+
+namespace GestaoPedidos.Domain.Entities
 {
+    [DynamoDBTable("Promocao")]
     public class Promocao : Entidade
     {
+        [DynamoDBProperty]
         public string Texto { get; private set; }
+
+        [DynamoDBProperty]
         public bool Status { get; private set; }
 
         public Promocao(string texto, bool status)
         {
-            Texto = texto;
-            Status = status;
-        }
-
-        public Promocao(int id, string texto, bool status)
-        {
-            Id = id;
             Texto = texto;
             Status = status;
         }

@@ -1,13 +1,18 @@
-﻿namespace GestaoPedidos.Domain.Entities
-{
-    public class HistoricoUsoPromocao
-    {
-        public int IdPromocao { get; private set; }
-        public int IdCliente { get; private set; }
-        public bool Utilizado { get; private set; }
+﻿using Amazon.DynamoDBv2.DataModel;
 
-        public Promocao Promocao { get; private set; }
-        public Cliente Cliente { get; private set; }
+namespace GestaoPedidos.Domain.Entities
+{
+    [DynamoDBTable("HistoricoUsoPromocao")]
+    public class HistoricoUsoPromocao : Entidade
+    {
+        [DynamoDBProperty]
+        public int IdPromocao { get; private set; }
+
+        [DynamoDBProperty]
+        public int IdCliente { get; private set; }
+
+        [DynamoDBProperty]
+        public bool Utilizado { get; private set; }
 
         public HistoricoUsoPromocao(int idPromocao, int idCliente, bool utilizado)
         {

@@ -15,12 +15,12 @@ namespace GestaoPedidos.Application.Services
 
         public async Task CadastrarHistoricoUsoPromocao(HistoricoUsoPromocao historicoUsoPromocao)
         {
-            await _historicoUsoPromocaoRepository.InserirUsoPromocao(historicoUsoPromocao);
+            await _historicoUsoPromocaoRepository.Cadastrar(historicoUsoPromocao);
         }
 
         public Task<IEnumerable<HistoricoUsoPromocao>> ObterHistoricoUsoPromocao(int clienteId)
         {
-            return _historicoUsoPromocaoRepository.ObterPorCliente(clienteId);
+            return (Task<IEnumerable<HistoricoUsoPromocao>>)_historicoUsoPromocaoRepository.Obter().Result.Where(p => p.IdCliente.Equals(clienteId));
         }
     }
 }
