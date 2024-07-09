@@ -32,7 +32,6 @@ builder.Services.AddSwaggerGen(c =>
 WebApplication app = builder.Build();
 
 app.MapHealthChecks("/healthz");
-app.UseDeveloperExceptionPage();
 app.UseRouting();
 app.UseEndpoints(endpoints =>
 {

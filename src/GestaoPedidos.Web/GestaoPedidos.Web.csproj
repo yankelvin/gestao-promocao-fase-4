@@ -9,6 +9,7 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 	<DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
     <DocumentationFile>bin\Debug\net8.0\GestaoPedidos.xml</DocumentationFile>
+	<SonarQubeExclude>true</SonarQubeExclude>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,4 +27,11 @@
     <ProjectReference Include="..\GestaoPedidos.Infrastructure\GestaoPedidos.Infrastructure.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+		<_ContentIncludedByDefault Remove="GestaoPedidosWeb\src\GestaoPedidosWeb\appsettings.Development.json" />
+		<_ContentIncludedByDefault Remove="GestaoPedidosWeb\src\GestaoPedidosWeb\appsettings.json" />
+		<_ContentIncludedByDefault Remove="GestaoPedidosWeb\src\GestaoPedidosWeb\aws-lambda-tools-defaults.json" />
+		<_ContentIncludedByDefault Remove="GestaoPedidosWeb\test\GestaoPedidosWeb.Tests\appsettings.json" />
+		<_ContentIncludedByDefault Remove="GestaoPedidosWeb\test\GestaoPedidosWeb.Tests\SampleRequests\ValuesController-Get.json" />
+	</ItemGroup>
 </Project>
