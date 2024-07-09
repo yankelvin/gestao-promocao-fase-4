@@ -9,12 +9,12 @@ namespace GestaoPedidos.Infrastructure.Data.Repositories
     public class DynamoDbService<T> where T : Entidade
     {
         private readonly IAmazonDynamoDB _dynamoDbClient;
-        private readonly DynamoDBContext _context;
+        private readonly IDynamoDBContext _context;
 
-        public DynamoDbService(IAmazonDynamoDB dynamoDbClient)
+        public DynamoDbService(IAmazonDynamoDB dynamoDbClient, IDynamoDBContext context = null)
         {
             _dynamoDbClient = dynamoDbClient;
-            _context = new DynamoDBContext(_dynamoDbClient);
+            _context = context ?? new DynamoDBContext(_dynamoDbClient);
         }
 
         public async Task Cadastrar(T entity)
