@@ -18,6 +18,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="Moq" Version="4.20.70" />
     <PackageReference Include="NUnit" Version="3.14.0" />
@@ -33,6 +34,7 @@
   <ItemGroup>
     <ProjectReference Include="..\GestaoPedidos.Application\GestaoPedidos.Application.csproj" />
     <ProjectReference Include="..\GestaoPedidos.Domain\GestaoPedidos.Domain.csproj" />
+    <ProjectReference Include="..\GestaoPedidos.Web\GestaoPedidos.Web.csproj" />
   </ItemGroup>
 
   <ItemGroup>
